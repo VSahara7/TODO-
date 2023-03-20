@@ -1,0 +1,46 @@
+﻿@model TODO_APP.Models.User
+
+@{
+    var error = TempData["Error"] as string;
+    var returnUrl = ViewData["ReturnUrl"] as string;
+}
+<link rel="stylesheet" href="/css/style.css">
+<div class="text-center">
+    <h1 class="display-4">Welcome To Todo App</h1>
+</div>
+
+
+<form method="post" action="/login?ReturnUrl=@System.Net.WebUtility.UrlEncode(returnUrl)">
+    <div class="border p-3 mt-4">
+        <div class="row pb-2">
+            <h2 class="text-primary">Login </h2>
+            @if (!string.IsNullOrEmpty(error))
+            {
+                <h2 class="alert-danger" style="padding:20px;">@error</h2>
+            }
+            <hr />
+        </div>
+        @*<div asp-validation-summary ="All"></div>*@
+        <div class=mb-3>
+            <label asp-for=UserMail></label>
+            <input asp-for="UserMail" class="form-control" />
+            <span asp-validation-for="UserMail" class="text-danger"></span>
+        </div>
+        <div class=mb-3>
+            <label asp-for=UserPassword></label>
+            <input asp-for="UserPassword" class="form-control" type="password" />
+            <span asp-validation-for="UserPassword" class="text-danger"></span>
+        </div>
+        <input type="submit" value="Login" class="btn btn-primary" style="width:150px">
+
+    </div>
+
+</form>
+
+
+@section Scripts{
+    @{
+        <partial name="_ValidationScriptsPartial" />
+
+    }
+}

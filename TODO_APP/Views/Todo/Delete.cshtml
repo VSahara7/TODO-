@@ -1,0 +1,34 @@
+﻿@model TODO_APP.Models.Todo
+<form method="post" asp-action="DeletePOST">
+    <div class="border p-3 mt-4">
+        <input asp-for="taskId" hidden />
+        <div class="row pb-2">
+            <h2 class="text-primary">Delete Task</h2>
+            <hr />
+        </div>
+        <div asp-validation-summary="All"></div>
+        <div class=mb-4>
+            <label asp-for=taskName></label>
+            <input asp-for="taskName" disabled class="form-control" />
+
+
+
+        </div>
+        <div class=mb-4>
+            <label asp-for=creationDate></label>
+            <input asp-for="creationDate" disabled class="form-control" />
+
+
+
+        </div>
+        <div class=mb-4>
+            <label asp-for=completionDate></label>
+            <input asp-for="completionDate" disabled class="form-control" />
+        </div>
+
+
+
+        <button type="submit" class="btn btn-danger" style="width:150px">Delete</button>
+        <a asp-controller="Todo" asp-action="Index" class="btn alert-secondary" style="width:150px"> Cancel </a>
+    </div>
+</form>
